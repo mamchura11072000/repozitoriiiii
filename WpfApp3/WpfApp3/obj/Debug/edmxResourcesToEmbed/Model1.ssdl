@@ -1,0 +1,80 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="Хранилище Database1Model" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="Apartment">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="HouseID" Type="int" Nullable="false" />
+    <Property Name="Number" Type="varchar" MaxLength="10" Nullable="false" />
+    <Property Name="Area" Type="float" Nullable="false" />
+    <Property Name="CountOfRooms" Type="int" Nullable="false" />
+    <Property Name="Section" Type="int" Nullable="false" />
+    <Property Name="Floor" Type="int" Nullable="false" />
+    <Property Name="IsSold" Type="bit" Nullable="false" />
+    <Property Name="BuildingCost" Type="int" Nullable="false" />
+    <Property Name="ApartmentValueAdded" Type="int" Nullable="false" />
+    <Property Name="IsDeleted" Type="bit" Nullable="false" />
+  </EntityType>
+  <EntityType Name="House">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="ResidentialComplexID" Type="int" Nullable="false" />
+    <Property Name="Street" Type="varchar" MaxLength="255" Nullable="false" />
+    <Property Name="Number" Type="varchar" MaxLength="10" Nullable="false" />
+    <Property Name="BuildingCost" Type="int" Nullable="false" />
+    <Property Name="HouseValueAdded" Type="int" Nullable="false" />
+    <Property Name="IsDeleted" Type="bit" Nullable="false" />
+  </EntityType>
+  <EntityType Name="ResidentialComplex">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Name" Type="varchar" MaxLength="255" Nullable="false" />
+    <Property Name="City" Type="varchar" MaxLength="255" Nullable="false" />
+    <Property Name="Status" Type="varchar" MaxLength="15" Nullable="false" />
+    <Property Name="BuildingCost" Type="int" Nullable="false" />
+    <Property Name="ComplexValueAdded" Type="int" Nullable="false" />
+    <Property Name="IsDeleted" Type="bit" Nullable="false" />
+  </EntityType>
+  <Association Name="apartments_fk0">
+    <End Role="House" Type="Self.House" Multiplicity="1" />
+    <End Role="Apartment" Type="Self.Apartment" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="House">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="Apartment">
+        <PropertyRef Name="HouseID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="houses_fk0">
+    <End Role="ResidentialComplex" Type="Self.ResidentialComplex" Multiplicity="1" />
+    <End Role="House" Type="Self.House" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ResidentialComplex">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="House">
+        <PropertyRef Name="ResidentialComplexID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="Хранилище Database1ModelContainer">
+    <EntitySet Name="Apartment" EntityType="Self.Apartment" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="House" EntityType="Self.House" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="ResidentialComplex" EntityType="Self.ResidentialComplex" Schema="dbo" store:Type="Tables" />
+    <AssociationSet Name="apartments_fk0" Association="Self.apartments_fk0">
+      <End Role="House" EntitySet="House" />
+      <End Role="Apartment" EntitySet="Apartment" />
+    </AssociationSet>
+    <AssociationSet Name="houses_fk0" Association="Self.houses_fk0">
+      <End Role="ResidentialComplex" EntitySet="ResidentialComplex" />
+      <End Role="House" EntitySet="House" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

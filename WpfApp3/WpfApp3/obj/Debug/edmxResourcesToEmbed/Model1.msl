@@ -1,0 +1,48 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="Хранилище Database1ModelContainer" CdmEntityContainer="Database1Entities">
+    <EntitySetMapping Name="Apartments">
+      <EntityTypeMapping TypeName="Database1Model.Apartment">
+        <MappingFragment StoreEntitySet="Apartment">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="HouseID" ColumnName="HouseID" />
+          <ScalarProperty Name="Number" ColumnName="Number" />
+          <ScalarProperty Name="Area" ColumnName="Area" />
+          <ScalarProperty Name="CountOfRooms" ColumnName="CountOfRooms" />
+          <ScalarProperty Name="Section" ColumnName="Section" />
+          <ScalarProperty Name="Floor" ColumnName="Floor" />
+          <ScalarProperty Name="IsSold" ColumnName="IsSold" />
+          <ScalarProperty Name="BuildingCost" ColumnName="BuildingCost" />
+          <ScalarProperty Name="ApartmentValueAdded" ColumnName="ApartmentValueAdded" />
+          <ScalarProperty Name="IsDeleted" ColumnName="IsDeleted" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Houses">
+      <EntityTypeMapping TypeName="Database1Model.House">
+        <MappingFragment StoreEntitySet="House">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="ResidentialComplexID" ColumnName="ResidentialComplexID" />
+          <ScalarProperty Name="Street" ColumnName="Street" />
+          <ScalarProperty Name="Number" ColumnName="Number" />
+          <ScalarProperty Name="BuildingCost" ColumnName="BuildingCost" />
+          <ScalarProperty Name="HouseValueAdded" ColumnName="HouseValueAdded" />
+          <ScalarProperty Name="IsDeleted" ColumnName="IsDeleted" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ResidentialComplexes">
+      <EntityTypeMapping TypeName="Database1Model.ResidentialComplex">
+        <MappingFragment StoreEntitySet="ResidentialComplex">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="City" ColumnName="City" />
+          <ScalarProperty Name="Status" ColumnName="Status" />
+          <ScalarProperty Name="BuildingCost" ColumnName="BuildingCost" />
+          <ScalarProperty Name="ComplexValueAdded" ColumnName="ComplexValueAdded" />
+          <ScalarProperty Name="IsDeleted" ColumnName="IsDeleted" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>
